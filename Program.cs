@@ -7,7 +7,10 @@
         static void Main(string[] args)
         {
 
-            Console.WriteLine("Hello World!");
+            ProgramLogic pl = new ProgramLogic();
+            pl.AddFileToList(pl.pathToFile1);
+            bool valueExists=pl.CheckValueInList("Ernst Cassirer", pl.textListOne);
+            Console.WriteLine(valueExists);
         }
     }
 }
