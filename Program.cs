@@ -10,10 +10,10 @@
            ProgramLogic pl = new ProgramLogic();
            var textList =  pl.AddFileToList(pl.pathToFile1, pl.textListOne);
 
-            //foreach (var s in textList)
-            //{
-            //    Console.WriteLine(s);
-            //}
+            foreach (var s in textList)
+            {
+                Console.WriteLine(s);
+            }
 
 
             //bool valueExists=pl.CheckValueInList("Ernst Cassirer", pl.textListOne);

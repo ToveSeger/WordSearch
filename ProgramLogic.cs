@@ -35,12 +35,13 @@
                 string textFile;
                 while ((textFile = sr.ReadLine()) != null)
                 {
+                    textFile=System.Text.RegularExpressions.Regex.Replace(textFile, @"[^a-zA-Z0-9\s]", string.Empty);
                     var words = textFile.Split(" ");
-                    foreach (var item in words)
+
+                    foreach (var w in words)
                     {
-                        Console.WriteLine(item);
-                    }
-                    //stringList.Add(textFile);        
+                        stringList.Add(w);
+                    }          
                 }
             }
             return stringList;
