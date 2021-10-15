@@ -8,16 +8,17 @@
         {
 
            ProgramLogic pl = new ProgramLogic();
-           var textList =  pl.AddFileToList(pl.pathToFile1, pl.textListOne);
-           pl.ReadFile(pl.pathToFile1);
-            //foreach (var s in textList)
-            //{
-            //    Console.WriteLine(s);
-            //}
+           pl.CheckValueInDocuments("on");
+           //var textList =  pl.AddFileToList(pl.pathToFile1, pl.textListOne);
+
+           // foreach (var s in textList)
+           // {
+           //     Console.WriteLine(s);
+           // }
 
 
-            //bool valueExists=pl.CheckValueInList("Ernst Cassirer", pl.textListOne);
-            //Console.WriteLine(valueExists);
+           // bool valueExists=pl.CheckValueInList("Ernst", pl.textListOne);
+           // Console.WriteLine(valueExists);
         }
     }
 }
