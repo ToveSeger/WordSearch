@@ -52,14 +52,5 @@
             if (list.Contains(value)) return true;
             else return false;
         }
-
-        //    public void PrintArray(string[] stringArray)
-        //    {
-        //        foreach (var s in stringArray)
-        //        {
-        //            Console.WriteLine(stringArray);
-        //        }
-        //    }
-        //}
     }
 }
