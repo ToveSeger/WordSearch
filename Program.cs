@@ -9,7 +9,7 @@
 
            ProgramLogic pl = new ProgramLogic();
            var textList =  pl.AddFileToList(pl.pathToFile1, pl.textListOne);
-
+           pl.ReadFile(pl.pathToFile1);
             //foreach (var s in textList)
             //{
             //    Console.WriteLine(s);

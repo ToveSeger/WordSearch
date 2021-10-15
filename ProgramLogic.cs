@@ -19,10 +19,12 @@
         {
             using (StreamReader sr = File.OpenText(filePath))
             {
+                string fileText = System.IO.File.ReadAllText(filePath);
+                fileText = System.Text.RegularExpressions.Regex.Replace(fileText, "(\",\"|\"\")", " ");
                 string s;
-                while ((s = sr.ReadLine()) != null)
+                while ((fileText = sr.ReadLine()) != null)
                 {
-                    Console.WriteLine(s);
+                    Console.WriteLine(fileText);
                 }
             }
 
@@ -50,6 +52,7 @@
         {
             if (list.Contains(value)) return true;
             else return false;
+            
         }
 
         //    public void PrintArray(string[] stringArray)
