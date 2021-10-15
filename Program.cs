@@ -7,10 +7,17 @@
         static void Main(string[] args)
         {
 
-            ProgramLogic pl = new ProgramLogic();
-            pl.AddFileToList(pl.pathToFile1);
-            bool valueExists=pl.CheckValueInList("Ernst Cassirer", pl.textListOne);
-            Console.WriteLine(valueExists);
+           ProgramLogic pl = new ProgramLogic();
+           var textList =  pl.AddFileToList(pl.pathToFile1, pl.textListOne);
+
+            //foreach (var s in textList)
+            //{
+            //    Console.WriteLine(s);
+            //}
+
+
+            //bool valueExists=pl.CheckValueInList("Ernst Cassirer", pl.textListOne);
+            //Console.WriteLine(valueExists);
         }
     }
 }
