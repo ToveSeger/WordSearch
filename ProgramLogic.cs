@@ -95,16 +95,16 @@
 
         }
 
-        public List<string> GetAmountOfWords(List<string> listToSort, int amount)
+        public void GetAmountOfWords(List<string> listToSort, int amount)
         {
-            List<string> newAmountOfWordsList = new List<string>();
+            listToSort = AddFileToList(pathToFile1, textListOne);
 
             listToSort.Sort();
             for (int i = 0; i < amount; i++)
             {
-                newAmountOfWordsList.Add(i.ToString());
+                Console.WriteLine(listToSort[i]);
             }
-            return newAmountOfWordsList;
+
         }
     }
 }
