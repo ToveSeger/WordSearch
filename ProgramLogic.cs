@@ -14,7 +14,7 @@
         public string pathToFile2 { get; } = @"TextFiles\File2.txt";
         public string pathToFile3 { get; } = @"TextFiles\File2.txt";
 
-
+        //HEJHEJ
 
         ////Reads file 
         //public void ReadFile(string filePath)
