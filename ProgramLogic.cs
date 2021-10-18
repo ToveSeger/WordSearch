@@ -64,22 +64,35 @@
              textListTwo = AddFileToList(pathToFile2, textListTwo);
              textListThree = AddFileToList(pathToFile3, textListThree);
              int counterListOne = 0;
+             int counterListTwo = 0;
+             int counterListThree = 0;
 
             var listOneContainsValue = CheckValueInList(value, textListOne);
             
+            foreach (var i in textListOne.Where(x => x == value))
+            {
+                counterListOne++;
+            }
+            foreach (var i in textListTwo.Where(x => x == value))
+            {
+                counterListTwo++;
+            }
+            foreach (var i in textListThree.Where(x => x == value))
+            {
+                counterListThree++;
+            }
 
-            //foreach (var item in textListOne)
-            //{
-            //    Console.WriteLine(item);
-            //}
-            //if (listOneContainsValue)
-            //{
-                foreach (var i in textListOne.Where(x => x == value))
-                {
-                    counterListOne++;
-                }
+            int highestCount = 0;
+            int secondCount = 0;
+            int lastCount = 0;
+            string highestText = "";
 
-                Console.WriteLine($"{value} exists {counterListOne} times in text one");
+            if (counterListOne > counterListTwo && counterListOne > counterListThree)
+            {
+                highestCount = counterListOne;
+                highestText = "Text1";
+            }
+            Console.WriteLine($"{value} exists {counterListOne} times in {highestText}");
             //}
 
             //var listTwoContainsValue = CheckValueInList(value, textListTwo);

@@ -8,7 +8,7 @@
         {
 
            ProgramLogic pl = new ProgramLogic();
-           pl.CheckValueInDocuments("myself");
+           pl.CheckValueInDocuments("on");
            //var textList =  pl.AddFileToList(pl.pathToFile1, pl.textListOne);
 
            // foreach (var s in textList)
