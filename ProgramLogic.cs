@@ -34,6 +34,7 @@
                     {
                         string word = w.ToLower();
                         stringList.Add(word);
+                        if (string.IsNullOrWhiteSpace(word)) stringList.Remove(word);
                     }
                 }
             }
@@ -102,6 +103,10 @@
             listToSort.Sort();
             for (int i = 0; i < amount; i++)
             {
+                if (string.IsNullOrWhiteSpace(listToSort[i]) && listToSort[i] == String.Empty)
+                {
+                    listToSort.Remove(listToSort[i]);
+                }
                 Console.WriteLine(listToSort[i]);
             }
 
