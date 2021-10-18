@@ -44,17 +44,13 @@
         {
             if (list.Contains(value)) return true;
             else return false;
-            
         }
 
         public void CheckValueInDocuments(string value)
         {
-             textListOne = AddFileToList(pathToFile1, textListOne);
-             textListTwo = AddFileToList(pathToFile2, textListTwo);
-             textListThree = AddFileToList(pathToFile3, textListThree);
-             int counterListOne = 0;
-             int counterListTwo = 0;
-             int counterListThree = 0;
+            textListOne = AddFileToList(pathToFile1, textListOne);
+            textListTwo = AddFileToList(pathToFile2, textListTwo);
+            textListThree = AddFileToList(pathToFile3, textListThree);
 
             var listOneContainsValue = CheckValueInList(value, textListOne);
             //int counterListOne=0;
@@ -77,10 +73,10 @@
             Console.WriteLine($"{value} exists {counterListOne} times in text one");
             Console.WriteLine($"{value} exists {counterListTwo} times in text two");
             Console.WriteLine($"{value} exists {counterListThree} times in text three");
-           
 
-            //var listTwoContainsValue = CheckValueInList(value, textListTwo);
-            //var listThreeContainsValue = CheckValueInList(value, textListThree);
+
+            var listTwoContainsValue = CheckValueInList(value, textListTwo);
+            var listThreeContainsValue = CheckValueInList(value, textListThree);
         }
 
         public void CheckHighestOccurence()
