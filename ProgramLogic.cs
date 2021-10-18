@@ -175,7 +175,7 @@
                 Console.WriteLine("Hello, welcome to Word Search!\nWhat do you want to do?");
                 Console.WriteLine("1. Search for a specific word in all documents.");
                 Console.WriteLine("2. Print saved search results.");
-                Console.WriteLine("3.");
+                Console.WriteLine("3. Sort the documents in alphabetical order");
                 Console.WriteLine("4. Exit");
                 Console.WriteLine(separator);
                 try
