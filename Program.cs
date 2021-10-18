@@ -9,6 +9,7 @@
 
            ProgramLogic pl = new ProgramLogic();
            pl.CheckValueInDocuments("on");
+            pl.CheckHighestOccurence();
            //var textList =  pl.AddFileToList(pl.pathToFile1, pl.textListOne);
 
            // foreach (var s in textList)
