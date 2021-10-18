@@ -9,6 +9,7 @@
 
 
            ProgramLogic pl = new ProgramLogic();
+            pl.PopulateLists();
             pl.Menu();
            //pl.CheckValueInDocuments("on");
            // pl.CheckHighestOccurence();
