@@ -94,6 +94,18 @@
             }
 
         }
+
+        public List<string> GetAmountOfWords(List<string> listToSort, int amount)
+        {
+            List<string> newAmountOfWordsList = new List<string>();
+
+            listToSort.Sort();
+            for (int i = 0; i < amount; i++)
+            {
+                newAmountOfWordsList.Add(i.ToString());
+            }
+            return newAmountOfWordsList;
+        }
     }
 }
 
