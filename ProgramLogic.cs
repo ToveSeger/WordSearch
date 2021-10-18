@@ -8,6 +8,7 @@
 
     class ProgramLogic
     {
+        //HEEEEEJ
         public List<string> textListOne { get; set; } = new List<string>();
         public List<string> textListTwo { get; set; } = new List<string>();
         public List<string> textListThree { get; set; } = new List<string>();
