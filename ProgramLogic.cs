@@ -57,6 +57,7 @@
         {
             if (list.Contains(value)) return true;
             else return false;
+            
         }
 
         public void CheckValueInDocuments(string value)
