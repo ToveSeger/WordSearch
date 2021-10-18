@@ -7,9 +7,10 @@
         static void Main(string[] args)
         {
 
+
            ProgramLogic pl = new ProgramLogic();
-           pl.GetAmountOfWords(pl.textListOne, 100);
-           
+            pl.PopulateLists();
+            pl.Menu();
            //pl.CheckValueInDocuments("on");
            // pl.CheckHighestOccurence();
            //var textList =  pl.AddFileToList(pl.pathToFile1, pl.textListOne);
