@@ -30,6 +30,8 @@
             textListTwo = AddFileToList(pathToFile2, textListTwo);
             textListThree = AddFileToList(pathToFile3, textListThree);
         }
+      
+        
         public static List<string> AddFileToList(string filePath, List<string> stringList)
         {
             using (StreamReader sr = File.OpenText(filePath))
@@ -44,6 +46,7 @@
                     {
                         string word = w.ToLower();                       
                         stringList.Add(word);
+                        if (string.IsNullOrWhiteSpace(word)) stringList.Remove(word);
                     }          
                 }
             }
@@ -58,11 +61,6 @@
 
         public void CheckValueInDocuments(string value)
         {
-             //textListOne = AddFileToList(pathToFile1, textListOne);
-             //textListTwo = AddFileToList(pathToFile2, textListTwo);
-             //textListThree = AddFileToList(pathToFile3, textListThree);
-
-            //var listOneContainsValue = CheckValueInList(value, textListOne);
             ClearCounters();
             foreach (var i in textListOne.Where(x => x == value))
             {
@@ -82,10 +80,6 @@
             Console.WriteLine($"{value} exists {counterListTwo} times in text two");
             Console.WriteLine($"{value} exists {counterListThree} times in text three");
             Console.WriteLine(separator);
-
-            
-            //var listTwoContainsValue = CheckValueInList(value, textListTwo);
-            //var listThreeContainsValue = CheckValueInList(value, textListThree);
 
             if(counterListOne!=0 && counterListTwo!=0 && counterListThree!=0)
             {
@@ -166,6 +160,29 @@
             }
         }
 
+        internal List<string> ListChooser(int listNumber)
+        {
+            if (listNumber == 1) return textListOne;
+            if (listNumber == 2) return textListTwo;
+            if (listNumber == 3) return textListThree;
+            return null;
+        }
+        public void GetAmountOfWords(int listNumber, int amount)
+        {           
+            var listToSort = ListChooser(listNumber);
+
+            listToSort.Sort();
+            for (int i = 0; i < amount; i++)
+            {
+                if (string.IsNullOrWhiteSpace(listToSort[i]) && listToSort[i] == String.Empty)
+                {
+                    listToSort.Remove(listToSort[i]);
+                }
+                Console.WriteLine(listToSort[i]);
+            }
+
+        }
+
         public void Menu()
         {            
             int input=0;
@@ -175,7 +192,7 @@
                 Console.WriteLine("Hello, welcome to Word Search!\nWhat do you want to do?");
                 Console.WriteLine("1. Search for a specific word in all documents.");
                 Console.WriteLine("2. Print saved search results.");
-                Console.WriteLine("3. Sort the documents in alphabetical order");
+                Console.WriteLine("3. Sort the documents in alphabetical order and present the first x words");
                 Console.WriteLine("4. Exit");
                 Console.WriteLine(separator);
                 try
@@ -199,6 +216,13 @@
                         PrintSavedSearchResults();
                         break;
                     case 3:
+                        Console.WriteLine("1. Text One");
+                        Console.WriteLine("2. Text Two");
+                        Console.WriteLine("3. Text Three");
+                        int chosenText = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("How many words do you want to present?");
+                        int chosenAmount = Convert.ToInt32(Console.ReadLine());
+                        GetAmountOfWords(chosenText, chosenAmount);
                         break;
                     case 4:
                         Console.WriteLine("Bye, and welcome back!");
@@ -213,23 +237,3 @@
         }
     }
 }
-
-
-
-
-
-
-
-////Reads file 
-//public void ReadFile(string filePath)
-//{
-//    using (StreamReader sr = File.OpenText(filePath))
-//    {
-//        string s;
-//        while ((s = sr.ReadLine()) != null)
-//        {
-//            Console.WriteLine(s);
-//        }
-//    }
-
-//}
