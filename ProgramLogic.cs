@@ -81,10 +81,11 @@
             Console.WriteLine($"{value} exists {counterListThree} times in text three");
             Console.WriteLine(separator);
 
-            if(counterListOne!=0 && counterListTwo!=0 && counterListThree!=0)
+            if (counterListOne == 0 && counterListTwo == 0 && counterListThree == 0)
             {
-                CheckHighestOccurence();
+                return;
             }
+            CheckHighestOccurence();
            
         }
 
@@ -117,49 +118,70 @@
             return isSaved;
         }
 
+        //Counter to keep track of unique key values in Dictionary SavedOccurrence. Declared outside of method scope to avoid duplicates. 
         int count = 1;
+        /// <summary>
+        /// Method to save a specified search result in data structure. 
+        /// </summary>
+        /// <param name="word">Input word to save in data structure.</param>
         public void SaveToStructure(string word)
         {
             Console.WriteLine("Want to save the search result (y/n)?");
-            char input = Convert.ToChar(Console.ReadLine().ToLower());
+            string input = Console.ReadLine().ToLower();
             var sortedOccurence = from entry in Occurrence orderby entry.Value descending select entry;
-            if (input == 'y' && !CheckIfKeyIsSaved(word))
-            {               
-                SavedOccurrence.Add($"Word:{word}", Convert.ToInt32(null));
-                foreach (var item in sortedOccurence)
-                {
-                    string keyItem = count + "." + item.Key;
-                    SavedOccurrence.Add(keyItem, item.Value);
-                    count++;
-                }
-
-                Console.WriteLine(separator);
-                Console.WriteLine("Following is saved:");
-                Console.WriteLine("(Presented in descending order counting occurrences of searched word)");
-                Console.WriteLine(separator);
-                foreach (KeyValuePair<string, int> entry in SavedOccurrence)
-                {
-                    Console.WriteLine(entry.Key, entry.Value);
-                }
-                Occurrence.Clear();
-            }
-            else if(input == 'y' && CheckIfKeyIsSaved(word)) Console.WriteLine("This word has already been searched for and is to be found in searched results");
-
-            if (input == 'n')
+            
+            switch (input)
             {
-                Console.WriteLine("Search results were not saved.");
-                Occurrence.Clear();
-            }
+                case "y":
+                    if (CheckIfKeyIsSaved(word)) Console.WriteLine("This word has already been searched for and is to be found in searched results");
+
+                    else
+                    {
+                        SavedOccurrence.Add($"Word:{word}", Convert.ToInt32(null));
+                        foreach (var item in sortedOccurence)
+                        {
+                            string keyItem = count + "." + item.Key;
+                            SavedOccurrence.Add(keyItem, item.Value);
+                            count++;
+                        }
+                        
+                        Console.WriteLine(separator);
+                        PrintSavedSearchResults();
+                    }
+                        Occurrence.Clear();
+                    break;
+                case "n":
+                    Console.WriteLine("Search results were not saved.");
+                    Occurrence.Clear();
+                    break;
+
+                default:
+                    Console.WriteLine("Faulty input.Please choose y / n.");
+                    break;
+            }           
+           
         }
 
+        /// <summary>
+        /// Method to print search saved search results. 
+        /// </summary>
         public void PrintSavedSearchResults()
         {
+            Console.WriteLine(separator);
+            Console.WriteLine("Following is saved:");
+            Console.WriteLine("Presented in descending order counting occurrences of searched word");
+            Console.WriteLine("(if no text exists under searched word, the word is not presented in any text.)");
+                     
             foreach (KeyValuePair<string, int> entry in SavedOccurrence)
             {
                 Console.WriteLine(entry.Key, entry.Value);
             }
         }
-
+        /// <summary>
+        /// Method to determine which list that the user wants to search in. 
+        /// </summary>
+        /// <param name="listNumber">Input number that has a list representation</param>
+        /// <returns>The list that represents the listNumber</returns>
         internal List<string> ListChooser(int listNumber)
         {
             if (listNumber == 1) return textListOne;
@@ -167,6 +189,12 @@
             if (listNumber == 3) return textListThree;
             return null;
         }
+
+        /// <summary>
+        /// Method to present the first given number of words in a given text. 
+        /// </summary>
+        /// <param name="listNumber">Input number that has a list representation</param>
+        /// <param name="amount">Amount of words that user wants presented</param>
         public void GetAmountOfWords(int listNumber, int amount)
         {           
             var listToSort = ListChooser(listNumber);
@@ -183,6 +211,9 @@
 
         }
 
+        /// <summary>
+        /// Method to present a menu to user. Collects input from user and redirects to the correct method. 
+        /// </summary>
         public void Menu()
         {            
             int input=0;
