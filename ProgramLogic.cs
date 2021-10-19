@@ -5,7 +5,7 @@
     using System.IO;
     using System.Linq;
     using System.Text;
-
+ 
     class ProgramLogic
     {
         internal static string pathToFile1 { get; } = @"TextFiles\File1.txt";
@@ -118,6 +118,7 @@
             return isSaved;
         }
 
+    
         int count = 1;
         public void SaveToStructure(string word)
         {
