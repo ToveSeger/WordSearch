@@ -189,7 +189,7 @@
             if (listNumber == 3) return textListThree;
             return null;
         }
-
+        int word = 0;
         /// <summary>
         /// Method to present the first given number of words in a given text. 
         /// </summary>
@@ -200,14 +200,32 @@
             var listToSort = ListChooser(listNumber);
 
             listToSort.Sort();
-            for (int i = 0; i < amount; i++)
+            
+            if (string.IsNullOrWhiteSpace(listToSort[word]) && listToSort[word] == String.Empty)
             {
-                if (string.IsNullOrWhiteSpace(listToSort[i]) && listToSort[i] == String.Empty)
-                {
-                    listToSort.Remove(listToSort[i]);
-                }
-                Console.WriteLine(listToSort[i]);
+                listToSort.Remove(listToSort[word]);
             }
+
+            Console.WriteLine(listToSort[word]);
+
+            if (word < amount - 1)
+            {
+                word++;
+            }
+            else return;
+            GetAmountOfWords(listNumber, amount);
+
+            //var listToSort = ListChooser(listNumber);
+
+            //listToSort.Sort();
+            //for (int i = 0; i < amount; i++)
+            //{
+            //    if (string.IsNullOrWhiteSpace(listToSort[i]) && listToSort[i] == String.Empty)
+            //    {
+            //        listToSort.Remove(listToSort[i]);
+            //    }
+            //    Console.WriteLine(listToSort[i]);
+            //}
 
         }
 
@@ -247,9 +265,10 @@
                         PrintSavedSearchResults();
                         break;
                     case 3:
+                        Console.WriteLine("Please choose document by entering one of the following numbers:");
                         Console.WriteLine("1. Text One");
                         Console.WriteLine("2. Text Two");
-                        Console.WriteLine("3. Text Three");
+                        Console.WriteLine("3. Text Three"); //LÄGG IN FELHANTERING                        
                         int chosenText = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine("How many words do you want to present?");
                         int chosenAmount = Convert.ToInt32(Console.ReadLine());
