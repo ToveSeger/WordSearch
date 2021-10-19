@@ -6,6 +6,10 @@
     using System.Linq;
     using System.Text;
 
+    /*
+     * This class handles the entire logic for the program. It has the menu that nagivates the program but also the methods that make it possible
+     * to run it.
+     */
     class ProgramLogic
     {
         internal static string pathToFile1 { get; } = @"TextFiles\File1.txt";
@@ -24,6 +28,9 @@
 
         string separator = "********************";
 
+        /*
+         * PopulateLists will create separate lists for the different text files.
+         */
         public void PopulateLists()
         {
             textListOne = AddFileToList(pathToFile1, textListOne);
@@ -31,7 +38,11 @@
             textListThree = AddFileToList(pathToFile3, textListThree);
         }
       
-        
+        /*
+         * AddFileToList will take two parameters in order for the method to be able to read a text file as long as it's not empty.
+         * It then reads the file, removes any special characters, takes every word and makes it lower case and adds it to a list.
+         * Which is then returned when calling on this method.
+         */
         public static List<string> AddFileToList(string filePath, List<string> stringList)
         {
             using (StreamReader sr = File.OpenText(filePath))
@@ -53,12 +64,21 @@
             return stringList;
         }
 
+        /*
+         * This method will simply check if the "value" parameter is in the "list" parameter. If that's the case, then it will return true.
+         */
         public bool CheckValueInList(string value, List<string> list)
         {
             if (list.Contains(value)) return true;
             else return false;
         }
 
+        /*
+         * CheckValueInDocuments is the method that will count how many times the parameter "value" exists in the 3 different texts.
+         * The "value" parameter is the chosen word that the user types in.
+         * After the check is done, it will print to the console the results, then as long as the counters aren't 0 it will
+         * use the method CheckHighestOccurence() to present a ranking of the documents.
+         */
         public void CheckValueInDocuments(string value)
         {
             ClearCounters();
@@ -88,6 +108,10 @@
            
         }
 
+        /*
+         * This method is here to clear the counters once they've been used. This exists in order to prevent the counters from starting to
+         * add the values from different searched words.
+         */
         public void ClearCounters()
         {
             counterListOne = 0;
@@ -95,6 +119,10 @@
             counterListThree = 0;
         }
 
+        /*
+         * CheckHighestOccurence is the method that will rank the text files(lists) depending on the occurrence of the chosen word by the user.
+         * A Dictionary is used in order to make it possible to store both a int value but also attach that to a string value.
+         */
         public void CheckHighestOccurence()
         {      
             Occurrence.Add("Text One", counterListOne);
@@ -111,6 +139,9 @@
             Console.WriteLine(separator);
         }
 
+        /*
+         * This bool method will check if the word has already been searched and saved by the user.
+         */
         internal bool CheckIfKeyIsSaved(string word)
         {
             var isSaved = SavedOccurrence.ContainsKey($"Word:{word}") ? true : false;
