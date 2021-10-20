@@ -189,9 +189,12 @@
             if (listNumber == 3) return textListThree;
             return null;
         }
+
+        //Int to keep track of the index value of the current word in the list. Declared outside of method scope to avoid to zero set the variable. 
         int word = 0;
         /// <summary>
         /// Method to present the first given number of words in a given text. 
+        /// Recursion is used to avoid nested loops and use the stack instead. 
         /// </summary>
         /// <param name="listNumber">Input number that has a list representation</param>
         /// <param name="amount">Amount of words that user wants presented</param>
@@ -211,9 +214,13 @@
             if (word < amount - 1)
             {
                 word++;
+                GetAmountOfWords(listNumber, amount);
             }
-            else return;
-            GetAmountOfWords(listNumber, amount);
+            else
+            {
+                word = 0;
+                return;
+            }
 
             //var listToSort = ListChooser(listNumber);
 
@@ -268,11 +275,19 @@
                         Console.WriteLine("Please choose document by entering one of the following numbers:");
                         Console.WriteLine("1. Text One");
                         Console.WriteLine("2. Text Two");
-                        Console.WriteLine("3. Text Three"); //LÄGG IN FELHANTERING                        
-                        int chosenText = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("How many words do you want to present?");
-                        int chosenAmount = Convert.ToInt32(Console.ReadLine());
-                        GetAmountOfWords(chosenText, chosenAmount);
+                        Console.WriteLine("3. Text Three");
+                        try
+                        {
+                            int chosenText = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine("How many words do you want to present?");
+                            int chosenAmount = Convert.ToInt32(Console.ReadLine());
+                            GetAmountOfWords(chosenText, chosenAmount);
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("Faulty input, please try again.");
+                            goto case 3;
+                        }
                         break;
                     case 4:
                         Console.WriteLine("Bye, and welcome back!");
