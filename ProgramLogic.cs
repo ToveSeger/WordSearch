@@ -32,7 +32,7 @@
         /// <summary>
         /// PopulateLists will create separate lists for the different text files.
         /// </summary>
-        public void PopulateLists()
+        public void PopulateLists()//O(3)
         {
             textListOne = AddFileToList(pathToFile1, textListOne);
             textListTwo = AddFileToList(pathToFile2, textListTwo);
@@ -70,20 +70,28 @@
         }
 
         /*
-         * This method will simply check if the "value" parameter is in the "list" parameter. If that's the case, then it will return true.
+         * 
          */
+        /// <summary>
+        /// This method will simply check if the "value" parameter is in the "list" parameter. If that's the case, then it will return true.
+        /// </summary>
+        /// <param name="value">This is the chosen word that we will check for.</param>
+        /// <param name="list">The specified list to check for word in.</param>
+        /// <returns></returns>
         public bool CheckValueInList(string value, List<string> list)
         {
             if (list.Contains(value)) return true;
             else return false;
         }
 
-        /*
-         * CheckValueInDocuments is the method that will count how many times the parameter "value" exists in the 3 different texts.
-         * The "value" parameter is the chosen word that the user types in.
-         * After the check is done, it will print to the console the results, then as long as the counters aren't 0 it will
-         * use the method CheckHighestOccurence() to present a ranking of the documents.
-         */
+
+        /// <summary>
+        /// CheckValueInDocuments is the method that will count how many times the parameter "value" exists in the 3 different texts.
+        /// The "value" parameter is the chosen word that the user types in.
+        /// After the check is done, it will print to the console the results, then as long as the counters aren't 0 it will
+        /// use the method CheckHighestOccurence() to present a ranking of the documents.
+        /// </summary>
+        /// <param name="value">The word that will be counted.</param>
         public void CheckValueInDocuments(string value)
         {
             ClearCounters();
@@ -111,13 +119,14 @@
                 return;
             }
             CheckHighestOccurence();
-           
+
         }
 
-        /*
-         * This method is here to clear the counters once they've been used. This exists in order to prevent the counters from starting to
-         * add the values from different searched words.
-         */
+        
+        /// <summary>
+        /// This method is here to clear the counters once they've been used. This exists in order to prevent the counters from starting to
+        /// add the values from different searched words.
+        /// </summary>
         public void ClearCounters()
         {
             counterListOne = 0;
@@ -125,10 +134,11 @@
             counterListThree = 0;
         }
 
-        /*
-         * CheckHighestOccurence is the method that will rank the text files(lists) depending on the occurrence of the chosen word by the user.
-         * A Dictionary is used in order to make it possible to store both a int value but also attach that to a string value.
-         */
+        
+        /// <summary>
+        /// CheckHighestOccurence is the method that will rank the text files(lists) depending on the occurrence of the chosen word by the user.
+        /// A Dictionary is used in order to make it possible to store both a int value but also attach that to a string value.
+        /// </summary>
         public void CheckHighestOccurence()
         {      
             Occurrence.Add("Text One", counterListOne);
@@ -145,9 +155,12 @@
             Console.WriteLine(separator);
         }
 
-        /*
-         * This bool method will check if the word has already been searched and saved by the user.
-         */
+        
+        /// <summary>
+        /// This bool method will check if the word has already been searched and saved by the user.
+        /// </summary>
+        /// <param name="word">The word that will be checked for.</param>
+        /// <returns></returns>
         internal bool CheckIfKeyIsSaved(string word)
         {
             var isSaved = SavedOccurrence.ContainsKey($"Word:{word}") ? true : false;
@@ -184,7 +197,7 @@
                         Console.WriteLine(separator);
                         PrintSavedSearchResults();
                     }
-                        Occurrence.Clear();
+                    Occurrence.Clear();
                     break;
                 case "n":
                     Console.WriteLine("Search results were not saved.");
