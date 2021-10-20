@@ -165,7 +165,7 @@
         /// <summary>
         /// Method to print search saved search results. 
         /// </summary>
-        public void PrintSavedSearchResults()//O(4+n)
+        public void PrintSavedSearchResults()//O(n+4)
         {
             Console.WriteLine(separator);
             Console.WriteLine("Following is saved:");
@@ -221,19 +221,7 @@
                 word = 0;
                 return;
             }
-
-            //var listToSort = ListChooser(listNumber);
-
-            //listToSort.Sort();
-            //for (int i = 0; i < amount; i++)
-            //{
-            //    if (string.IsNullOrWhiteSpace(listToSort[i]) && listToSort[i] == String.Empty)
-            //    {
-            //        listToSort.Remove(listToSort[i]);
-            //    }
-            //    Console.WriteLine(listToSort[i]);
-            //}
-
+          
         }
 
         /// <summary>
