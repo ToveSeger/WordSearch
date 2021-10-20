@@ -69,9 +69,7 @@
             return stringList;
         }
 
-        /*
-         * 
-         */
+       
         /// <summary>
         /// This method will simply check if the "value" parameter is in the "list" parameter. If that's the case, then it will return true.
         /// </summary>
