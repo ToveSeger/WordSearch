@@ -6,6 +6,9 @@
     using System.Linq;
     using System.Text;
  
+    /// <summary>
+    /// 
+    /// </summary>
     class ProgramLogic
     {
         internal static string pathToFile1 { get; } = @"TextFiles\File1.txt";
