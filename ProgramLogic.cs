@@ -6,13 +6,9 @@
     using System.Linq;
     using System.Text;
 
-    /*
-     * This class handles the entire logic for the program. It has the menu that nagivates the program but also the methods that make it possible
-     * to run it.
-     */
- 
     /// <summary>
-    /// 
+     /// This class handles the entire logic for the program. It has the menu that nagivates the program but also the methods that make it possible
+     /// to run it.
     /// </summary>
     class ProgramLogic
     {
@@ -32,9 +28,10 @@
 
         string separator = "********************";
 
-        /*
-         * PopulateLists will create separate lists for the different text files.
-         */
+        
+        /// <summary>
+        /// PopulateLists will create separate lists for the different text files.
+        /// </summary>
         public void PopulateLists()
         {
             textListOne = AddFileToList(pathToFile1, textListOne);
@@ -42,11 +39,15 @@
             textListThree = AddFileToList(pathToFile3, textListThree);
         }
       
-        /*
-         * AddFileToList will take two parameters in order for the method to be able to read a text file as long as it's not empty.
-         * It then reads the file, removes any special characters, takes every word and makes it lower case and adds it to a list.
-         * Which is then returned when calling on this method.
-         */
+       
+        /// <summary>
+        /// AddFileToList will take two parameters in order for the method to be able to read a text file as long as it's not empty.
+        /// It then reads the file, removes any special characters, takes every word and makes it lower case and adds it to a list.
+        /// Which is then returned when calling on this method.
+        /// </summary>
+        /// <param name="filePath">The destination of the text file that will be used to extract words from.</param>
+        /// <param name="stringList">The list that is used to save the words.</param>
+        /// <returns></returns>
         public static List<string> AddFileToList(string filePath, List<string> stringList)
         {
             using (StreamReader sr = File.OpenText(filePath))
