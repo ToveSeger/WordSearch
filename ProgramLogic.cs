@@ -201,7 +201,7 @@
         /// <summary>
         /// Method to print search saved search results. 
         /// </summary>
-        public void PrintSavedSearchResults()
+        public void PrintSavedSearchResults()//O(n+4)
         {
             Console.WriteLine(separator);
             Console.WriteLine("Following is saved:");
@@ -218,7 +218,7 @@
         /// </summary>
         /// <param name="listNumber">Input number that has a list representation</param>
         /// <returns>The list that represents the listNumber</returns>
-        internal List<string> ListChooser(int listNumber)
+        internal List<string> ListChooser(int listNumber)//O(3n)
         {
             if (listNumber == 1) return textListOne;
             if (listNumber == 2) return textListTwo;
@@ -234,7 +234,7 @@
         /// </summary>
         /// <param name="listNumber">Input number that has a list representation</param>
         /// <param name="amount">Amount of words that user wants presented</param>
-        public void GetAmountOfWords(int listNumber, int amount)
+        public void GetAmountOfWords(int listNumber, int amount)//O(log n)
         {           
             var listToSort = ListChooser(listNumber);
 
@@ -257,19 +257,7 @@
                 word = 0;
                 return;
             }
-
-            //var listToSort = ListChooser(listNumber);
-
-            //listToSort.Sort();
-            //for (int i = 0; i < amount; i++)
-            //{
-            //    if (string.IsNullOrWhiteSpace(listToSort[i]) && listToSort[i] == String.Empty)
-            //    {
-            //        listToSort.Remove(listToSort[i]);
-            //    }
-            //    Console.WriteLine(listToSort[i]);
-            //}
-
+          
         }
 
         /// <summary>
