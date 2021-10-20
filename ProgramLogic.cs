@@ -24,7 +24,7 @@
 
         string separator = "********************";
 
-        public void PopulateLists()
+        public void PopulateLists()//O(3)
         {
             textListOne = AddFileToList(pathToFile1, textListOne);
             textListTwo = AddFileToList(pathToFile2, textListTwo);
@@ -165,7 +165,7 @@
         /// <summary>
         /// Method to print search saved search results. 
         /// </summary>
-        public void PrintSavedSearchResults()
+        public void PrintSavedSearchResults()//O(4+n)
         {
             Console.WriteLine(separator);
             Console.WriteLine("Following is saved:");
@@ -182,7 +182,7 @@
         /// </summary>
         /// <param name="listNumber">Input number that has a list representation</param>
         /// <returns>The list that represents the listNumber</returns>
-        internal List<string> ListChooser(int listNumber)
+        internal List<string> ListChooser(int listNumber)//O(3n)
         {
             if (listNumber == 1) return textListOne;
             if (listNumber == 2) return textListTwo;
@@ -198,7 +198,7 @@
         /// </summary>
         /// <param name="listNumber">Input number that has a list representation</param>
         /// <param name="amount">Amount of words that user wants presented</param>
-        public void GetAmountOfWords(int listNumber, int amount)
+        public void GetAmountOfWords(int listNumber, int amount)//O(log n)
         {           
             var listToSort = ListChooser(listNumber);
 
