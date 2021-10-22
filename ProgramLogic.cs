@@ -32,7 +32,7 @@
         /// <summary>
         /// PopulateLists will create separate lists for the different text files.
         /// </summary>
-        public void PopulateLists()//O(3)
+        internal void PopulateLists()//O(3)
         {
             textListOne = AddFileToList(pathToFile1, textListOne);
             textListTwo = AddFileToList(pathToFile2, textListTwo);
@@ -48,7 +48,7 @@
         /// <param name="filePath">The destination of the text file that will be used to extract words from.</param>
         /// <param name="stringList">The list that is used to save the words.</param>
         /// <returns></returns>
-        public static List<string> AddFileToList(string filePath, List<string> stringList)
+        internal static List<string> AddFileToList(string filePath, List<string> stringList)
         {
             using (StreamReader sr = File.OpenText(filePath))
             {
@@ -76,7 +76,7 @@
         /// <param name="value">This is the chosen word that we will check for.</param>
         /// <param name="list">The specified list to check for word in.</param>
         /// <returns></returns>
-        public bool CheckValueInList(string value, List<string> list)
+        internal bool CheckValueInList(string value, List<string> list)
         {
             if (list.Contains(value)) return true;
             else return false;
@@ -90,7 +90,7 @@
         /// use the method CheckHighestOccurence() to present a ranking of the documents.
         /// </summary>
         /// <param name="value">The word that will be counted.</param>
-        public void CheckValueInDocuments(string value)
+        internal void CheckValueInDocuments(string value)
         {
             ClearCounters();
             foreach (var i in textListOne.Where(x => x == value))
@@ -125,7 +125,7 @@
         /// This method is here to clear the counters once they've been used. This exists in order to prevent the counters from starting to
         /// add the values from different searched words.
         /// </summary>
-        public void ClearCounters()
+        internal void ClearCounters()
         {
             counterListOne = 0;
             counterListTwo = 0;
@@ -137,7 +137,7 @@
         /// CheckHighestOccurence is the method that will rank the text files(lists) depending on the occurrence of the chosen word by the user.
         /// A Dictionary is used in order to make it possible to store both a int value but also attach that to a string value.
         /// </summary>
-        public void CheckHighestOccurence()
+        internal void CheckHighestOccurence()
         {      
             Occurrence.Add("Text One", counterListOne);
             Occurrence.Add("Text Two", counterListTwo);
@@ -166,12 +166,12 @@
         }
 
         //Counter to keep track of unique key values in Dictionary SavedOccurrence. Declared outside of method scope to avoid duplicates. 
-        int count = 1;
+        internal int count = 1;
         /// <summary>
         /// Method to save a specified search result in data structure. 
         /// </summary>
         /// <param name="word">Input word to save in data structure.</param>
-        public void SaveToStructure(string word)
+        internal void SaveToStructure(string word)
         {
             Console.WriteLine("Want to save the search result (y/n)?");
             string input = Console.ReadLine().ToLower();
@@ -212,7 +212,7 @@
         /// <summary>
         /// Method to print search saved search results. 
         /// </summary>
-        public void PrintSavedSearchResults()//O(n+4)
+        internal void PrintSavedSearchResults()//O(n+4)
         {
             Console.WriteLine(separator);
             Console.WriteLine("Following is saved:");
@@ -229,7 +229,7 @@
         /// </summary>
         /// <param name="listNumber">Input number that has a list representation</param>
         /// <returns>The list that represents the listNumber</returns>
-        internal List<string> ListChooser(int listNumber)//O(3n)
+        internal List<string> ListChooser(int listNumber)//O(3)
         {
             if (listNumber == 1) return textListOne;
             if (listNumber == 2) return textListTwo;
@@ -238,14 +238,14 @@
         }
 
         //Int to keep track of the index value of the current word in the list. Declared outside of method scope to avoid to zero set the variable. 
-        int word = 0;
+        internal int word = 0;
         /// <summary>
         /// Method to present the first given number of words in a given text. 
         /// Recursion is used to avoid nested loops and use the stack instead. 
         /// </summary>
         /// <param name="listNumber">Input number that has a list representation</param>
         /// <param name="amount">Amount of words that user wants presented</param>
-        public void GetAmountOfWords(int listNumber, int amount)//O(log n)
+        internal void GetAmountOfWords(int listNumber, int amount)//O(log n)
         {           
             var listToSort = ListChooser(listNumber);
 
